@@ -1,5 +1,7 @@
 <template>
-  <header>Image Uploader</header>
+  <header class="ui secondary pointing menu">
+    <a href="/" class="active item">Image Uploader</a>
+  </header>
 </template>
 
 <script>
