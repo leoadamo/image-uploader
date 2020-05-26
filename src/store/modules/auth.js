@@ -1,3 +1,4 @@
+import { router } from '../../router/';
 import api from '../../api/imgur';
 import qs from 'qs';
 
@@ -18,6 +19,7 @@ const actions = {
 
     commit('SET_TOKEN', query.access_token);
     window.localStorage.setItem('imgur_token', query.access_token);
+    router.push('/');
   },
   logout: ({ commit }) => {
     commit('SET_TOKEN', null);

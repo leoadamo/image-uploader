@@ -1,6 +1,8 @@
 <template>
   <header class="ui secondary pointing menu">
-    <a href="/" class="active item">Image Uploader</a>
+    <router-link :to="{ name: 'home' }" class="active item">
+      Image Uploader
+    </router-link>
 
     <div class="right menu">
       <a v-if="!isLoggedIn" class="ui item" @click="login">
@@ -8,12 +10,14 @@
       </a>
 
       <div v-else class="row">
-        <a class="item">
+        <router-link :to="{ name: 'home' }" class="item">
           Gallery
-        </a>
-        <a class="item">
+        </router-link>
+
+        <router-link :to="{ name: 'upload' }" class="item">
           Upload
-        </a>
+        </router-link>
+
         <a class="item" @click="logout">
           Logout
         </a>
