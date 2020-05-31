@@ -1,13 +1,21 @@
 <template>
-  <ul class="image-list">
-    <li
-      class="image-item"
-      v-for="image in allImages"
-      :key="image.id"
-    >
-      <AppImage :image="image" />
-    </li>
-  </ul>
+  <div v-if="isLoggedIn">
+    <ul class="image-list" v-if="allImages.length">
+      <li
+        class="image-item"
+        v-for="image in allImages"
+        :key="image.id"
+      >
+        <AppImage :image="image" />
+      </li>
+    </ul>
+    <p class="message" v-else>
+      {{ allImages.length }} images Founded!
+    </p>
+  </div>
+  <div v-else>
+    <h2 class="app-title">Please, login to get start!</h2>
+  </div>
 </template>
 
 <script>
@@ -20,7 +28,7 @@ export default {
     AppImage
   },
   computed: {
-    ...mapGetters(['allImages'])
+    ...mapGetters(['allImages', 'isLoggedIn'])
   },
   methods: {
     ...mapActions(['fetchImages'])
@@ -44,5 +52,23 @@ export default {
   display: flex;
   align-items: stretch;
   list-style: none;
+}
+
+.message {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.app-title {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
 </style>

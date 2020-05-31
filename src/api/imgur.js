@@ -19,5 +19,23 @@ export default {
         headers: { Authorization: `Bearer ${token}` }
       }
     );
+  },
+  uploadImages(images, token) {
+    const promises = Array.from(images).map(image => {
+      const formData = new FormData();
+      formData.append('image', image);
+
+      return axios.post(
+        `${process.env.VUE_APP_API_URL}/3/image`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+    });
+
+    return Promise.all(promises);
   }
 };
